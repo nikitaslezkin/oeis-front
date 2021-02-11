@@ -1,7 +1,7 @@
 import { cacheAdapterEnhancer } from 'axios-extensions';
 import LRU from 'lru-cache';
 
-export default function({ $axios, ssrContext }) {
+export default function ({ $axios, ssrContext }) {
     let CACHE_MAX_AGE = parseInt(process.env.CACHE_MAX_AGE || 0, 10);
     CACHE_MAX_AGE = isNaN(CACHE_MAX_AGE) ? 0 : CACHE_MAX_AGE;
 

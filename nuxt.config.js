@@ -29,28 +29,27 @@ export default {
     head: {
         title: 'OEIS',
         meta: [
-            { charset: 'utf-8' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            { name: 'description', hid: 'description', content: 'OEIS' },
-            { name: 'msapplication-TileImage', content: '/favicon/mstile-150x150.png' }
+            {charset: 'utf-8'},
+            {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+            {name: 'description', hid: 'description', content: 'OEIS'},
+            {name: 'msapplication-TileImage', content: '/favicon/mstile-150x150.png'}
         ],
         link: [
-            { rel: 'icon', href: '/favicon/favicon.ico' },
-            { rel: 'icon', href: '/favicon/favicon.svg', 'type': 'image/svg+xml' },
-            { rel: 'apple-touch-icon', href: '/favicon/apple-touch-icon.png', sizes: '180x180' },
+            {rel: 'icon', href: '/favicon/favicon.ico'},
+            {rel: 'icon', href: '/favicon/favicon.svg', 'type': 'image/svg+xml'},
+            {rel: 'apple-touch-icon', href: '/favicon/apple-touch-icon.png', sizes: '180x180'},
+            // Font
+            {rel: 'preconnect', href: 'https://fonts.gstatic.com'},
+            {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap'}
         ],
-        script: [
-
-        ].concat(prodScripts),
-        noscript: [
-
-        ].concat(noscript),
+        script: [].concat(prodScripts),
+        noscript: [].concat(noscript),
     },
     /*
     ** Global CSS
     */
     css: [
-        '~/assets/less/main.less',
+        '~/assets/less/main.less'
     ],
     /*
     ** Plugins to load before mounting the App
@@ -59,18 +58,13 @@ export default {
         '~/plugins/axios'
     ],
     /*
-    ** Nuxt.js dev-modules
-    */
-    buildModules: [
-        '@nuxtjs/dotenv',
-    ],
-    /*
     ** Nuxt.js modules
     */
     modules: [
         '@nuxtjs/axios',
         '@nuxtjs/svg-sprite',
         '@nuxtjs/auth-next',
+        '@nuxtjs/style-resources',
 
         '~/modules/axCache'
     ],
@@ -145,6 +139,6 @@ export default {
         }
     },
     styleResources: {
-        less: ['@/assets/less/constants.less', '@/assets/less/mixins.less']
+        less: ['@/assets/less/consts.less', '@/assets/less/mixins.less']
     }
 }
