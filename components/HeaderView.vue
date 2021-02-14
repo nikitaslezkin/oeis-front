@@ -32,7 +32,7 @@
             padding: 10px 20px;
             background: transparent;
             transition: background, color;
-            transition-duration: @hover-duration;
+            transition-duration: @animation-duration;
 
             &:hover, &.nuxt-link-active {
                 background: @color-white;
