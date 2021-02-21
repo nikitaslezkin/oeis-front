@@ -111,9 +111,15 @@
         &-option {
             padding: 7px 10px;
             cursor: pointer;
+            background: transparent;
+            transition: background @animation-duration;
 
             &:not(:last-child) {
                 margin-bottom: 8px;
+            }
+
+            &:hover {
+                background: fade(@color-gray, 15);
             }
         }
     }
