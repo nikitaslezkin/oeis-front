@@ -1,7 +1,7 @@
 <template>
     <header class="Header">
         <div class="Header-inner s-text-caption">
-            <router-link class="Header-item" :to="{name: 'index'}">Schemes</router-link>
+            <router-link class="Header-item" :to="{name: 'index'}">Circuits</router-link>
         </div>
     </header>
 </template>
@@ -34,7 +34,7 @@
             transition: background, color;
             transition-duration: @animation-duration;
 
-            &:hover, &.nuxt-link-active {
+            &:hover, &.nuxt-link-exact-active {
                 background: @color-white;
                 color: @color-black;
                 opacity: 1;

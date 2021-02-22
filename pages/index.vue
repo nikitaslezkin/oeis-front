@@ -5,12 +5,9 @@
             <search placeholder="1, 2, 3, 5, 10" :select-options="selectOptions"/>
         </div>
         <div class="s-results">
-            <router-link :to="{name: 'index'}" v-for="scheme in schemes" class="s-result" :key="scheme.number">
-                <div class="s-result-info">
-                    <span class="s-result-number">{{scheme.number}}</span>
-                    <span class="s-result-title">{{scheme.name}}</span>
-                </div>
-                <div class="s-result-description">{{scheme.description}}</div>
+            <router-link :to="{name: 'circuits-id', params: {id: circuit.id}}" v-for="circuit in circuits" class="s-result" :key="circuit.id">
+                <div class="s-result-title">{{circuit.name}}</div>
+                <div class="s-result-description">{{circuit.description}}</div>
             </router-link>
         </div>
     </div>
@@ -38,19 +35,19 @@
                         title: 'By Tables'
                     }
                 ],
-                schemes: [
+                circuits: [
                     {
-                        number: 'A01534',
+                        id: 1,
                         name: 'Fibonacci',
                         description: '0 1 1 2 3 5 8'
                     },
                     {
-                        number: 'A24234',
+                        id: 2,
                         name: 'Geometrical',
                         description: '1 2 4 8 16 32'
                     },
                     {
-                        number: 'A324234',
+                        id: 3,
                         name: 'Arithmetic',
                         description: '1 2 3 4 5 6 7 8'
                     }

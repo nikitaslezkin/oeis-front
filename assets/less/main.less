@@ -112,11 +112,27 @@ input {
         background: fade(@color-gray, 15);
     }
 
-    &-info {
+    &-title {
         .s-text-subtitle;
     }
 
     &-description {
         .s-text-common;
+    }
+}
+
+.s-item-page-info {
+    margin-top: 50px;
+}
+
+.s-block {
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    &-content {
+        span:not(:first-child) {
+            margin-left: 10px;
+        }
     }
 }
