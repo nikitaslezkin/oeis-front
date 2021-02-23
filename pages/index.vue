@@ -53,6 +53,12 @@
                     }
                 ]
             }
+        },
+
+        methods: {
+            async fetchSearchData() {
+                
+            }
         }
     }
 </script>

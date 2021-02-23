@@ -75,45 +75,19 @@ export default {
 
     axios: {
         // extra config e.g
-        proxy: false,
+        proxy: true,
         debug: !!process.env.AXIOS_DEBUG
     },
 
-    // auth: {
-    //     strategies: {
-    //         'laravelJWT': {
-    //             provider: 'laravel/jwt',
-    //             url: '/jwt',
-    //             endpoints: {
-    //                 login: {
-    //                     url: '/auth/login'
-    //                 },
-    //                 refresh: {
-    //                     url: '/auth/refresh'
-    //                 },
-    //                 logout: {
-    //                     url: '/auth/logout'
-    //                 },
-    //                 user: {
-    //                     url: '/auth/me',
-    //                     method: 'post'
-    //                 }
-    //             },
-    //             token: {
-    //                 property: '_token',
-    //                 maxAge: 3600
-    //             },
-    //             user: {
-    //                 property: 'data'
-    //             },
-    //         },
-    //     },
-    //     redirect: {
-    //         login: '/login',
-    //         logout: '/',
-    //         home: '/my/settings'
-    //     }
-    // },
+    proxy: {
+        '/api/': {
+            target: process.env.PROXY_API_URL || 'http://127.0.0.1:8080/',
+            pathRewrite: {'^/api/': ''},
+            secure: !!process.env.PROXY_SECURE,
+            debug: !!process.env.PROXY_DEBUG
+        },
+    },
+
     /*
     ** Build configuration
     */
