@@ -1,10 +1,13 @@
 <template>
-    <form class="Search">
-        <input class="s-input" :placeholder="placeholder" v-model="form.query">
+    <form class="Search" @submit.prevent="$emit('search', form)">
+        <input class="s-input" :placeholder="placeholder" v-model="form.search">
         <div class="Search-select" v-if="selectOptions.length">
-            <select-box :options="selectOptions" v-model="form.section"/>
+            <select-box :options="selectOptions" v-model="form.kind"/>
         </div>
-        <button class="s-button" type="submit">Search</button>
+        <component class="s-button" :to="{name: route, query: form}"
+                   :is="route && form.search ? 'router-link' : 'button'" type="submit">
+            Search
+        </component>
     </form>
 </template>
 
@@ -28,14 +31,15 @@
             selectOptions: {
                 type: Array,
                 default: () => []
-            }
+            },
+            route: String
         },
 
         data() {
             return {
                 form: {
-                    query: '',
-                    section: SCHEME_SELECT_TYPE_TAGS
+                    search: '',
+                    kind: SCHEME_SELECT_TYPE_TAGS
                 }
             }
         }
