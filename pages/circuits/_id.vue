@@ -8,8 +8,7 @@
                 <div class="s-block-content" v-html="circuit.ckt"/>
             </div>
             <div class="s-block">
-                <div class="s-text-subtitle">Truth table</div>
-                <div class="s-block-content" v-html="circuit.truth_table"/>
+                <collapsible title="Truth table" :content="circuit.truth_table"/>
             </div>
             <div class="s-block">
                 <div class="s-text-subtitle">Image</div>
@@ -38,8 +37,14 @@
 </template>
 
 <script>
+    import Collapsible from "../../components/Collapsible";
+
     export default {
         name: "Circuit",
+
+        components: {
+            Collapsible
+        },
 
         data() {
             return {

@@ -100,17 +100,20 @@ input {
     margin-top: 50px;
 }
 
-.s-result {
-    display: block;
-    padding: 20px 20px;
+.s-block-hover {
     background: transparent;
-    color: @color-black;
-    //border-bottom: 1px solid @color-black;
+    cursor: pointer;
     transition: background @animation-duration;
 
     &:hover {
         background: fade(@color-gray, 15);
     }
+}
+
+.s-result {
+    display: block;
+    padding: 20px 20px;
+    color: @color-black;
 
     &-title {
         .s-text-subtitle;

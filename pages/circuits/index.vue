@@ -6,7 +6,7 @@
         </div>
         <div class="s-results">
             <router-link :to="{name: 'circuits-id', params: {id: circuit.id}}" v-for="circuit in circuits"
-                         class="s-result" :key="circuit.id">
+                         class="s-result s-block-hover" :key="circuit.id">
                 <div class="s-result-title">{{circuit.name}}</div>
                 <div class="s-result-description">{{circuit.description}}</div>
             </router-link>
