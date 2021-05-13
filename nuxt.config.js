@@ -86,6 +86,12 @@ export default {
             secure: !!process.env.PROXY_SECURE,
             debug: !!process.env.PROXY_DEBUG
         },
+        '/api2/': {
+            target: process.env.PROXY_API_URL || 'http://127.0.0.1:5000/',
+            pathRewrite: {'^/api2/': ''},
+            secure: !!process.env.PROXY_SECURE,
+            debug: !!process.env.PROXY_DEBUG
+        },
     },
 
     /*

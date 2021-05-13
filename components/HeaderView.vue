@@ -3,6 +3,8 @@
         <div class="Header-inner s-text-caption">
             <router-link class="Header-item" :to="{name: 'index'}">About</router-link>
             <router-link class="Header-item Header-item--search" :to="{name: 'circuits'}">Circuits</router-link>
+            <router-link class="Header-item Header-item--search" :to="{name: 'papers'}">Papers</router-link>
+            <router-link class="Header-item Header-item--search" :to="{name: 'solver'}">Solver</router-link>
         </div>
     </header>
 </template>
