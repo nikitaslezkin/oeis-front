@@ -8,7 +8,7 @@
       <button class="s-button" @click="solve">Solve</button>
     </div>
     <div class="Solver-circuit s-block" v-if="circuit">
-      <div class="s-block-content" v-html="v"/>
+      <div class="s-block-content" v-text="circuit"/>
     </div>
     <div class="s-block" v-if="circuitImage">
       <div class="s-text-subtitle">Image</div>
