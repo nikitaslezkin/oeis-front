@@ -1,58 +1,70 @@
 <template>
-    <div class="Index">
-        <div class="s-text-title">Solver</div>
-        <div class="s-block">
-
-          <div class="s-block-content" v-html="solver"/>
-        </div>
-
-<!--      <div class="s-block">-->
-<!--        <div class="s-text-subtitle">Image</div>-->
-<!--        <div class="s-block-content">-->
-<!--          <img :src="circuitImage"/>-->
-<!--        </div>-->
-<!--      </div>-->
-
-
-      <div class="s-block">
-        <div class="s-text-subtitle">Image</div>
-        <div class="s-block-content">
-          <img :src="circuitImage"/>
-        </div>
-      </div>
-
+  <div class="Solver">
+    <div class="s-text-title">Solver</div>
+    <div class="Solver-form s-block">
+      <input class="s-input" placeholder="N" v-model="form.n">
+      <input class="s-input" placeholder="K" v-model="form.k">
+      <input class="s-input" placeholder="Truth table" v-model="form.table">
+      <button class="s-button" @click="solve">Solve</button>
     </div>
+    <div class="s-block" v-if="circuit">
+      <div class="s-block-content" v-html="v"/>
+    </div>
+    <div class="s-block" v-if="circuitImage">
+      <div class="s-text-subtitle">Image</div>
+      <div class="s-block-content">
+        <img :src="circuitImage"/>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import Collapsible from "../../components/Collapsible";
-
 export default {
   name: "Solver",
 
-  components: {
-    Collapsible
+  data() {
+    return {
+      form: {
+        n: '',
+        k: '',
+        table: ''
+      },
+      circuit: null,
+      circuitImage: null
+    };
   },
 
-  async asyncData({$axios, query}) {
-    let solver = [];
-    let circuitImage = [];
+  methods: {
+    async solve() {
+      this.circuit = await this.$axios.$get(`/api2/get_solve`, {
+        params: this.form
+      });
 
-    console.log('data');
+      const image = await this.$axios.$get(`/api2/get_image`, {
+        params: this.form
+      });
 
-
-    solver = await $axios.$get(`/api2/get_solve?n=3&k=6&tt=['01101001', '00010111', '00101001']`);
-    circuitImage = await $axios.$get(`/api2/get_image?n=3&k=6&tt=['01101001', '00010111', '00101001']`);
-    circuitImage = "data:image/png;base64, " + circuitImage.toString().substring(2, circuitImage.toString().length-1)
-    console.log(solver);
-
-    return {
-      solver, circuitImage
+      this.circuitImage = 'data:image/png;base64, ' + image.toString().substring(2, image.toString().length - 1);
     }
   }
 }
 </script>
 
 <style scoped lang="less">
+.Solver {
+  &-form {
+    display: flex;
 
+    input {
+      flex: 1;
+      margin-right: 20px;
+    }
+  }
+
+  &-select {
+    width: 150px;
+    margin-right: 20px;
+  }
+}
 </style>
