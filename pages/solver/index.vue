@@ -7,7 +7,7 @@
       <input class="s-input" placeholder="Truth table" v-model="form.table">
       <button class="s-button" @click="solve">Solve</button>
     </div>
-    <div class="s-block" v-if="circuit">
+    <div class="Solver-circuit s-block" v-if="circuit">
       <div class="s-block-content" v-html="v"/>
     </div>
     <div class="s-block" v-if="circuitImage">
@@ -60,6 +60,10 @@ export default {
       flex: 1;
       margin-right: 20px;
     }
+  }
+
+  &-circuit {
+    white-space: pre;
   }
 
   &-select {
