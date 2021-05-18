@@ -2,7 +2,7 @@
   <div class="Papers">
     <div class="s-text-title">Search papers</div>
     <div class="s-search">
-      <search placeholder="1, 2, 3, 5, 10" :select-options="selectOptions" route="papers"/>
+      <search placeholder="for example 'Knuth D'" :select-options="selectOptions" route="papers"/>
     </div>
     <div class="s-results">
       <router-link :to="{name: 'papers-id', params: {id: paper.id}}" v-for="paper in papers"

@@ -3,12 +3,17 @@
         <div class="s-text-title">{{circuit.name}}</div>
         <div class="s-text-caption">{{circuit.description}}</div>
         <div class="s-item-page-info s-text-common">
+
             <div class="s-block">
-                <div class="s-text-subtitle">CKT-format</div>
-                <div class="s-block-content" v-html="circuit.ckt"/>
+                <div class="Circuit-circuit s-block" v-if="circuit">
+                  <collapsible title="CKT-format" :content="circuit.ckt"/>
+                </div>
             </div>
+
             <div class="s-block">
+              <div class="Circuit-circuit s-block" v-if="circuit">
                 <collapsible title="Truth table" :content="circuit.truth_table"/>
+              </div>
             </div>
             <div class="s-block">
                 <div class="s-text-subtitle">Image</div>
@@ -48,20 +53,29 @@
 
         data() {
             return {
-                circuitImage: 'data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=='
+                circuitImage: null
             }
         },
 
         async asyncData({$axios, route}) {
             const circuit = await $axios.$get(`/api/circuit/${route.params.id}`);
 
+            const image = await $axios.$get(`/api2/get_image_by_ckt?ckt=${circuit.ckt}`);
+
+
+          const circuitImage = 'data:image/png;base64, ' + image.toString().substring(2, image.toString().length - 1);
+
             return {
-                circuit
+                circuit, circuitImage
             }
         }
     }
 </script>
 
 <style scoped lang="less">
-
+.Circuit {
+  &-circuit {
+    white-space: pre;
+  }
+}
 </style>

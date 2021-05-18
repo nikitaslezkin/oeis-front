@@ -2,7 +2,7 @@
     <div class="Circuits">
         <div class="s-text-title">Search circuits</div>
         <div class="s-search">
-            <search placeholder="1, 2, 3, 5, 10" :select-options="selectOptions" route="circuits"/>
+            <search placeholder="sum, thr, ..." :select-options="selectOptions" route="circuits"/>
         </div>
         <div class="s-results">
             <router-link :to="{name: 'circuits-id', params: {id: circuit.id}}" v-for="circuit in circuits"

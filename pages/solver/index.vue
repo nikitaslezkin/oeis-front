@@ -2,9 +2,9 @@
   <div class="Solver">
     <div class="s-text-title">Solver</div>
     <div class="Solver-form s-block">
-      <input class="s-input" placeholder="N" v-model="form.n">
-      <input class="s-input" placeholder="K" v-model="form.k">
-      <input class="s-input" placeholder="Truth table" v-model="form.table">
+      <input class="s-input" placeholder="3" v-model="form.n">
+      <input class="s-input" placeholder="5" v-model="form.k">
+      <input class="s-input" placeholder="[01101001,00010111,00101001]" v-model="form.table">
       <button class="s-button" @click="solve">Solve</button>
     </div>
     <div class="Solver-circuit s-block" v-if="circuit">
