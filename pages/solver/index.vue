@@ -3,7 +3,7 @@
     <div class="s-text-title">Solver</div>
     <div class="Solver-form s-block">
       <input class="s-input" placeholder="3" v-model="form.n">
-      <input class="s-input" placeholder="5" v-model="form.k">
+      <input class="s-input" placeholder="6" v-model="form.k">
       <input class="s-input" placeholder="[01101001,00010111,00101001]" v-model="form.table">
       <button class="s-button" @click="solve">Solve</button>
     </div>
@@ -45,7 +45,10 @@ export default {
         params: this.form
       });
 
-      this.circuitImage = 'data:image/png;base64, ' + image.toString().substring(2, image.toString().length - 1);
+      if (image === "")
+        this.circuitImage = null;
+      else
+        this.circuitImage = 'data:image/png;base64, ' + image.toString().substring(2, image.toString().length - 1);
     }
   }
 }
